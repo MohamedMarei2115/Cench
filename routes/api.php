@@ -73,13 +73,14 @@ Route::prefix('user/')->group(function () {
 
 Route::prefix('product')->group(function (){
     Route::get('/getAll',[ProductController::class,'getAll']);
+    Route::get('/getAll/{category_id}',[ProductController::class,'getAllInCategory']);
 //    Route::get('/detail/{id}',[AvatarController::class,'avatarDetail']);
 });
 
-//Route::prefix('event')->group(function (){
-//    Route::get('/',[CategoryController::class,'getAll']);
+Route::prefix('category')->group(function (){
+    Route::get('/getAll',[CategoryController::class,'getAll']);
 //    Route::get('/detail/{id}',[CategoryController::class,'eventDetail']);
-//});
+});
 //
 //Route::prefix('media')->group(function (){
 //    Route::post('/',[MediaController::class,'getMedia']);
@@ -95,4 +96,4 @@ Route::prefix('product')->group(function (){
 //    Route::get('/deleted_cards',[CardController::class,'deletedCards']);
 //});
 
-Route::get('/test/dailyRank', [\App\Http\Controllers\RankPointController::class,'dailyRank']);
+//Route::get('/test/dailyRank', [\App\Http\Controllers\RankPointController::class,'dailyRank']);

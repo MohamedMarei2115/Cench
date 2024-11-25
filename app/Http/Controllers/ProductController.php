@@ -40,6 +40,35 @@ class ProductController extends Controller
             'data' => $products,
         ], 200);
     }
+    public function getAllInCategory($category_id){
+        $products = Product::with(['stock.size', 'category'])
+            ->where('category_id',$category_id)
+            ->where('status', 1)
+            ->get(['id', 'name', 'details', 'imag', 'price', 'category_id'])
+            ->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'details' => $product->details,
+                    'imag' => $product->imag,
+                    'price' => $product->price,
+                    'category_name' => $product->category->name,
+                    'stock' => $product->stock->map(function ($stock) {
+                        return [
+                            'product_id' => $stock->product_id,
+                            'price' => $stock->price,
+                            'size' => $stock->size->size,
+                            'size_id' => $stock->size_id,
+                            'quantity' => $stock->quantity
+                        ];
+                    }),
+                ];
+            });        return response()->json([
+            'status' => 'success',
+            'message' => '',
+            'data' => $products,
+        ], 200);
+    }
 
     public function index()
     {
