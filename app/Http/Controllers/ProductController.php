@@ -13,8 +13,28 @@ class ProductController extends Controller
 
 
     public function getAll(){
-        $products = Product::with('category')->where('status',1)->get(['id','name','details','imag','price','category_id']);
-        return response()->json([
+        $products = Product::with(['stock.size', 'category'])
+            ->where('status', 1)
+            ->get(['id', 'name', 'details', 'imag', 'price', 'category_id'])
+            ->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'details' => $product->details,
+                    'imag' => $product->imag,
+                    'price' => $product->price,
+                    'category_name' => $product->category->name,
+                    'stock' => $product->stock->map(function ($stock) {
+                        return [
+                            'product_id' => $stock->product_id,
+                            'price' => $stock->price,
+                            'size' => $stock->size->size,
+                            'size_id' => $stock->size_id,
+                            'quantity' => $stock->quantity
+                        ];
+                    }),
+                ];
+            });        return response()->json([
             'status' => 'success',
             'message' => '',
             'data' => $products,
@@ -62,7 +82,7 @@ class ProductController extends Controller
             'details' => $request->detail,
             'imag' => $fileUrl,
             'price' => $request->price,
-            'size' => $request->size,
+//            'size' => $request->size,
             'status' => $request->status == 'on' ? 1 : 0
         ])) {
 
@@ -129,7 +149,7 @@ class ProductController extends Controller
         $product->details = $request->details;
         $product->price = $request->price;
         $product->status = $request->status == 'on' ? 1 : 0;
-        $product->size = $request->size;
+//        $product->size = $request->size;
 
         if ($product->save()) {
             return redirect()->back()->with('success', 'Product Updated Successfully');

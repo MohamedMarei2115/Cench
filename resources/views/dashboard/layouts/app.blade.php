@@ -174,8 +174,10 @@
                             </a>
                             <ul class="nav-sub">
                                 <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.category')}}">Categories</a></li>
+                                <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.size')}}">Sizes</a></li>
                                 <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.product')}}">Products</a></li>
                                 <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.order')}}">Orders</a></li>
+                                <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.stock')}}">Stock</a></li>
 {{--                                <li class="nav-sub-item"><a class="nav-sub-link" href="{{route('setting.general')}}">General Setting</a></li>--}}
                             </ul>
                         </li>

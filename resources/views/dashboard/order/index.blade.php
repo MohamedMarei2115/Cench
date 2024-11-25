@@ -60,7 +60,7 @@
                             <tbody>
 
                             @foreach($orders as $order)
-                                <tr @if($order->status == 'delivered') style="background-color: #d7edcb " @endif>
+                                <tr @if($order->status == 'delivered') style="background-color: #d7edcb " @elseif($order->status == 'in the way') style="background-color: #fff3cd " @endif>
                                 <td>{{$order->customer}}</td>
                                     @php
                                         $products = json_decode($order->products)

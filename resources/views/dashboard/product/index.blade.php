@@ -69,7 +69,7 @@
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>price</th>
-                                <th>size</th>
+{{--                                <th>size</th>--}}
                                 <th>details</th>
                                 <th>Status</th>
                                 <th>Options</th>
@@ -86,7 +86,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->category->name}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->size}}</td>
+{{--                                    <td>{{$product->size}}</td>--}}
                                     <td>{{$product->details}}</td>
                                     <td>
                                         @if($product->status == 1)
@@ -104,7 +104,6 @@
                                            data-price="{{$product->price}}"
                                            data-details="{{$product->details}}"
                                            data-categories="{{$categories}}"
-                                           data-size="{{$product->size}}"
                                            href=""><i class="fe fe-edit"></i>Edit</a>
 
                                         <a class="btn btn-danger btn-with-icon me-2"  data-bs-target="#deletePage"
@@ -157,18 +156,18 @@
                         <label for="link" class="mg-b-10">Imag</label>
                         <input type="file" class="form-control" id="link" name="imag" placeholder="" required>
                         <br>
-                        <label for="size" class="mg-b-10">Size</label>
-                        <div class="form-group  select2-lg">
-                            <select id="size" name="size" required
-                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"
-                                    aria-hidden="true">
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                            </select>
-                        </div>
-                        <br>
+{{--                        <label for="size" class="mg-b-10">Size</label>--}}
+{{--                        <div class="form-group  select2-lg">--}}
+{{--                            <select id="size" name="size" required--}}
+{{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
+{{--                                    aria-hidden="true">--}}
+{{--                                <option value="XS">XS</option>--}}
+{{--                                <option value="S">S</option>--}}
+{{--                                <option value="M">M</option>--}}
+{{--                                <option value="L">L</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                        <br>--}}
 
                         <label for="detail" class="mg-b-10">Detail</label>
                         <div class="form-group  select2-lg">
@@ -218,14 +217,14 @@
                         <br>
                         <label for="imag" class="mg-b-10">Imag</label>
                         <input type="file" class="form-control" id="imag" name="imag" placeholder="">
-                        <br>
-                        <label for="size" class="mg-b-10">Size</label>
-                        <div class="form-group  select2-lg">
-                            <select id="size" name="size" required
-                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"
-                                    aria-hidden="true">
-                            </select>
-                        </div>
+{{--                        <br>--}}
+{{--                        <label for="size" class="mg-b-10">Size</label>--}}
+{{--                        <div class="form-group  select2-lg">--}}
+{{--                            <select id="size" name="size" required--}}
+{{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
+{{--                                    aria-hidden="true">--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
                         <br>
                         <label for="details" class="mg-b-10">Detail</label>
                         <div class="form-group  select2-lg">
@@ -386,7 +385,7 @@
                 var productCategoryId = button.getAttribute('data-category_id');
                 var productDetails = button.getAttribute('data-details');
                 var productStatus = button.getAttribute('data-status');
-                var productSize = button.getAttribute('data-size');
+                // var productSize = button.getAttribute('data-size');
                 var categories = button.getAttribute('data-categories');
 
                 // Update the hidden input field inside the modal with the country ID
@@ -430,40 +429,40 @@
                 //     <option value="audio">audio</option>
                 //     <option value="image">image</option>
 
-                var selectSize = editModal.querySelector('select[name="size"]');
-                selectSize.innerHTML = '';  // Clear existing options
-
-                var option1 = document.createElement('option');
-                option1.value = 'XS';
-                option1.text = 'XS';
-                if (productSize === 'XS') {
-                    option1.selected = true;
-                }
-                selectSize.appendChild(option1);
-
-                var option2 = document.createElement('option');
-                option2.value = 'S';
-                option2.text = 'S';
-                if (productSize === 'S') {
-                    option2.selected = true;
-                }
-                selectSize.appendChild(option2);
-
-                var option3 = document.createElement('option');
-                option3.value = 'M';
-                option3.text = 'M';
-                if (productSize === 'M') {
-                    option3.selected = true;
-                }
-                selectSize.appendChild(option3);
-
-                var option4 = document.createElement('option');
-                option4.value = 'L';
-                option4.text = 'L';
-                if (productSize === 'L') {
-                    option4.selected = true;
-                }
-                selectSize.appendChild(option4);
+                // var selectSize = editModal.querySelector('select[name="size"]');
+                // selectSize.innerHTML = '';  // Clear existing options
+                //
+                // var option1 = document.createElement('option');
+                // option1.value = 'XS';
+                // option1.text = 'XS';
+                // if (productSize === 'XS') {
+                //     option1.selected = true;
+                // }
+                // selectSize.appendChild(option1);
+                //
+                // var option2 = document.createElement('option');
+                // option2.value = 'S';
+                // option2.text = 'S';
+                // if (productSize === 'S') {
+                //     option2.selected = true;
+                // }
+                // selectSize.appendChild(option2);
+                //
+                // var option3 = document.createElement('option');
+                // option3.value = 'M';
+                // option3.text = 'M';
+                // if (productSize === 'M') {
+                //     option3.selected = true;
+                // }
+                // selectSize.appendChild(option3);
+                //
+                // var option4 = document.createElement('option');
+                // option4.value = 'L';
+                // option4.text = 'L';
+                // if (productSize === 'L') {
+                //     option4.selected = true;
+                // }
+                // selectSize.appendChild(option4);
             });
         });
     </script>

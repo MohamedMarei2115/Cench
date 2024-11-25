@@ -7,6 +7,8 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +52,13 @@ Route::prefix('setting')->middleware('auth')->group(function (){
         Route::post('/category/delete', [CategoryController::class, 'destroy'])->name('category.delete');
     });
 
+    Route::prefix('size')->middleware('auth')->group(function (){
+        Route::get('/',[SizeController::class, 'index'])->name('setting.size');
+        Route::post('/size/add', [SizeController::class, 'store'])->name('size.add');
+        Route::post('/size/update', [SizeController::class, 'store'])->name('size.update');
+        Route::post('/size/delete', [SizeController::class, 'destroy'])->name('size.delete');
+    });
+
     Route::prefix('product')->middleware('auth')->group(function (){
         Route::get('/',[ProductController::class, 'index'])->name('setting.product');
         Route::post('/product/add', [ProductController::class, 'store'])->name('product.add');
@@ -57,12 +66,19 @@ Route::prefix('setting')->middleware('auth')->group(function (){
         Route::post('/product/delete', [ProductController::class, 'destroy'])->name('product.delete');
     });
 
-    Route::prefix('general')->middleware('auth')->group(function (){
-        Route::get('/',[GenralSettingController::class, 'index'])->name('setting.general');
-        Route::post('/general/store', [GenralSettingController::class, 'store'])->name('general.store');
-//        Route::post('/media/update', [MediaController::class, 'update'])->name('media.update');
-//        Route::post('/media/delete', [MediaController::class, 'destroy'])->name('media.delete');
+    Route::prefix('stock')->middleware('auth')->group(function (){
+        Route::get('/',[StockController::class, 'index'])->name('setting.stock');
+        Route::post('/stock/add', [StockController::class, 'store'])->name('stock.add');
+        Route::post('/stock/update', [StockController::class, 'update'])->name('stock.update');
+        Route::post('/stock/delete', [StockController::class, 'destroy'])->name('stock.delete');
     });
+
+//    Route::prefix('general')->middleware('auth')->group(function (){
+//        Route::get('/',[GenralSettingController::class, 'index'])->name('setting.general');
+//        Route::post('/general/store', [GenralSettingController::class, 'store'])->name('general.store');
+////        Route::post('/media/update', [MediaController::class, 'update'])->name('media.update');
+////        Route::post('/media/delete', [MediaController::class, 'destroy'])->name('media.delete');
+//    });
 
 });
 

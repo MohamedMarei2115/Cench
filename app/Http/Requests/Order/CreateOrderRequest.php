@@ -33,12 +33,14 @@ class CreateOrderRequest extends FormRequest
             'post_code' => 'required|min:1|max:255',
             'phone' => 'required|min:1|max:255',
             'email' => 'required|string|min:1|max:255',
-            'total' => 'required|min:1|max:255',
+            'total' => 'required|min:1',
             'products' => 'required|array',
             'products.*.name' => 'required|string|min:1|max:255',
-            'products.*.quantity' => 'required|integer|min:1|max:255',
+            'products.*.quantity' => 'required|integer|min:1',
             'products.*.size' => 'required|string|min:1|max:255',
-            'products.*.price' => 'required|numeric|min:1|max:255',
+            'products.*.price' => 'sometimes|numeric|min:1',
+            "products.*.product_id"=>"required|exists:products,id",
+            "products.*.size_id" => "required|exists:sizes,id",
         ];
     }
 }

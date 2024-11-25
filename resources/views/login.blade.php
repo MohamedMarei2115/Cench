@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="description" content="Cench Login">
-    <meta name="author" content="ToDoBest Login">
+    <meta name="author" content="Cench Login">
     <meta name="keywords" content="admin,dashboard,panel,bootstrap admin template,bootstrap dashboard,dashboard,themeforest admin dashboard,themeforest admin,themeforest dashboard,themeforest admin panel,themeforest admin template,themeforest admin dashboard,cool admin,it dashboard,admin design,dash templates,saas dashboard,dmin ui design">
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('/build/assets/img/brand/favicon.ico')}}" type="image/x-icon"/>
 
     <!-- Title -->
-    <title>ToDoBest Login</title>
+    <title>Cench Login</title>
 
     <!-- Bootstrap css-->
     <link id="style" href="{{asset('/build/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
