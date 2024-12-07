@@ -14,7 +14,7 @@ class ProductController extends Controller
 
 
     public function getAll(){
-        $products = Product::with(['stock.size', 'category'])
+        $products = Product::with(['stock.size', 'category','images'])
             ->where('status', 1)
             ->get(['id', 'name', 'details', 'imag', 'price', 'category_id'])
             ->map(function ($product) {
@@ -34,6 +34,11 @@ class ProductController extends Controller
                             'quantity' => $stock->quantity
                         ];
                     }),
+                    'images' => $product->images->map(function ($image) {
+                        return [
+                            'url' => $image->image_path,
+                        ];
+                    }),
                 ];
             });        return response()->json([
             'status' => 'success',
@@ -42,7 +47,7 @@ class ProductController extends Controller
         ], 200);
     }
     public function getAllInCategory($category_id){
-        $products = Product::with(['stock.size', 'category'])
+        $products = Product::with(['stock.size', 'category','images'])
             ->where('category_id',$category_id)
             ->where('status', 1)
             ->get(['id', 'name', 'details', 'imag', 'price', 'category_id'])
@@ -61,6 +66,11 @@ class ProductController extends Controller
                             'size' => $stock->size->size,
                             'size_id' => $stock->size_id,
                             'quantity' => $stock->quantity
+                        ];
+                    }),
+                    'images' => $product->images->map(function ($image) {
+                        return [
+                            'url' => $image->image_path,
                         ];
                     }),
                 ];
