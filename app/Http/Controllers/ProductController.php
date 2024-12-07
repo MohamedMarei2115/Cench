@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -95,6 +96,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($request->file('imag')) {
             $file = $request->file('imag');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -105,7 +107,9 @@ class ProductController extends Controller
         }
 
 
-        if (Product::create([
+
+
+        if ($product = Product::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
             'details' => $request->detail,
@@ -114,6 +118,22 @@ class ProductController extends Controller
 //            'size' => $request->size,
             'status' => $request->status == 'on' ? 1 : 0
         ])) {
+
+            if ($request->hasFile('images')) {
+                $id = $product->id;
+                foreach ($request->file('images') as $image) {
+
+                    $fileName = time() . '_' . $image->getClientOriginalName();
+
+                    $destinationPath = public_path('uploads/product/gallery/'.$id);
+                    $image->move($destinationPath, $fileName);
+                    $fileUrl = url('uploads/product/gallery/'.$id .'/'. $fileName);
+                    ProductImage::create([
+                        'product_id' => $id,
+                        'image_path' => $fileUrl,
+                    ]);
+                }
+            }
 
             return redirect()->back()->with('success', 'Product Added Successfully');
 

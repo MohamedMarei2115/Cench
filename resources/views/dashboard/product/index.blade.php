@@ -69,7 +69,7 @@
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>price</th>
-{{--                                <th>size</th>--}}
+                                {{--                                <th>size</th>--}}
                                 <th>details</th>
                                 <th>Status</th>
                                 <th>Options</th>
@@ -86,7 +86,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->category->name}}</td>
                                     <td>{{$product->price}}</td>
-{{--                                    <td>{{$product->size}}</td>--}}
+                                    {{--                                    <td>{{$product->size}}</td>--}}
                                     <td>{{$product->details}}</td>
                                     <td>
                                         @if($product->status == 1)
@@ -106,7 +106,12 @@
                                            data-categories="{{$categories}}"
                                            href=""><i class="fe fe-edit"></i>Edit</a>
 
-                                        <a class="btn btn-danger btn-with-icon me-2"  data-bs-target="#deletePage"
+                                        <a class="btn btn-warning btn-with-icon me-2"
+
+                                           href="{{route('edit.gallery',$product->id)}}"><i class="fe fe-edit"></i>Edit
+                                            Gallery</a>
+
+                                        <a class="btn btn-danger btn-with-icon me-2" data-bs-target="#deletePage"
                                            data-bs-toggle="modal" data-id="{{$product->id}}"
                                            data-name="{{$product->name}}"
                                            href=""><i class="fe fe-delete"></i>Delete</a>
@@ -153,21 +158,25 @@
                             <input type="number" min="1" step=".5" class="form-control" id="price" name="price"
                                    placeholder="Price" required>
                         </div>
-                        <label for="link" class="mg-b-10">Imag</label>
+                        <label for="link" class="mg-b-10">Main Imag</label>
                         <input type="file" class="form-control" id="link" name="imag" placeholder="" required>
                         <br>
-{{--                        <label for="size" class="mg-b-10">Size</label>--}}
-{{--                        <div class="form-group  select2-lg">--}}
-{{--                            <select id="size" name="size" required--}}
-{{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
-{{--                                    aria-hidden="true">--}}
-{{--                                <option value="XS">XS</option>--}}
-{{--                                <option value="S">S</option>--}}
-{{--                                <option value="M">M</option>--}}
-{{--                                <option value="L">L</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                        <br>--}}
+                        <div class="form-group  select2-lg">
+                            <label for="images" class="mg-b-10">Product Images</label>
+                            <input type="file" class="form-control" name="images[]" id="images" multiple>
+                        </div>
+                        {{--                        <label for="size" class="mg-b-10">Size</label>--}}
+                        {{--                        <div class="form-group  select2-lg">--}}
+                        {{--                            <select id="size" name="size" required--}}
+                        {{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
+                        {{--                                    aria-hidden="true">--}}
+                        {{--                                <option value="XS">XS</option>--}}
+                        {{--                                <option value="S">S</option>--}}
+                        {{--                                <option value="M">M</option>--}}
+                        {{--                                <option value="L">L</option>--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
+                        {{--                        <br>--}}
 
                         <label for="detail" class="mg-b-10">Detail</label>
                         <div class="form-group  select2-lg">
@@ -217,14 +226,14 @@
                         <br>
                         <label for="imag" class="mg-b-10">Imag</label>
                         <input type="file" class="form-control" id="imag" name="imag" placeholder="">
-{{--                        <br>--}}
-{{--                        <label for="size" class="mg-b-10">Size</label>--}}
-{{--                        <div class="form-group  select2-lg">--}}
-{{--                            <select id="size" name="size" required--}}
-{{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
-{{--                                    aria-hidden="true">--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
+                        {{--                        <br>--}}
+                        {{--                        <label for="size" class="mg-b-10">Size</label>--}}
+                        {{--                        <div class="form-group  select2-lg">--}}
+                        {{--                            <select id="size" name="size" required--}}
+                        {{--                                    class="form-control select-lg select2 select2-hidden-accessible" tabindex="-1"--}}
+                        {{--                                    aria-hidden="true">--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
                         <br>
                         <label for="details" class="mg-b-10">Detail</label>
                         <div class="form-group  select2-lg">

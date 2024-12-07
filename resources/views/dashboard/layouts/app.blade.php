@@ -31,6 +31,9 @@
 
     <!-- Mutipleselect css-->
     <link rel="stylesheet" href="{{asset('/build/assets/plugins/multipleselect/multiple-select.css')}}">
+
+    <!-- Internal Gallery css-->
+    <link href="{{asset('/build/assets/plugins/gallery/gallery.css')}}" rel="stylesheet">
     @yield('style')
 
 </head>
@@ -302,6 +305,16 @@
 <script src="{{asset('/build/assets/plugins/datatable/responsive.bootstrap5.min.js')}}"></script>
 <script src="{{asset('/build/assets/js/table-data.js')}}"></script>
 <script src="{{asset('/build/assets/js/select2.js')}}"></script>
+
+{{--<script src="{{asset('/build/assets/plugins/gallery/picturefill.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lightgallery.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lightgallery-1.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-pager.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-autoplay.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-fullscreen.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-zoom.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-hash.js')}}"></script>--}}
+{{--<script src="{{asset('/build/assets/plugins/gallery/lg-share.js')}}"></script>--}}
 
 @yield('script')
 </body>

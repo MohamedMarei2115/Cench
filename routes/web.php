@@ -6,6 +6,7 @@ use App\Http\Controllers\GenralSettingController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\StockController;
@@ -64,6 +65,11 @@ Route::prefix('setting')->middleware('auth')->group(function (){
         Route::post('/product/add', [ProductController::class, 'store'])->name('product.add');
         Route::post('/product/update', [ProductController::class, 'update'])->name('product.update');
         Route::post('/product/delete', [ProductController::class, 'destroy'])->name('product.delete');
+
+        Route::get('/editGallery/{id}',[ProductImageController::class, 'show'])->name('edit.gallery');
+        Route::delete('/deleteImage/{id}', [ProductImageController::class, 'destroy'])->name('delete.image');
+        Route::post('/addGallery', [ProductImageController::class, 'store'])->name('addGallery.add');
+
     });
 
     Route::prefix('stock')->middleware('auth')->group(function (){
